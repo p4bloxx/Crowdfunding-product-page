@@ -1,0 +1,699 @@
+//Tipography
+$ff: 'Commissioner', sans-serif;
+$fs-13: 0.8125rem;
+$fs-14: 0.875rem;
+$fs-15: 0.9375rem;
+$fs-16: 1rem;
+$fs-18: 1.125rem;
+$fs-20: 1.25rem;
+$fs-24: 1.5rem;
+$fs-28: 1.75rem;
+$fs-30: 1.875rem;
+$fs-32: 2rem;
+
+$fw-reg: 400;
+$fw-mdm: 500;
+$fw-bld: 700;
+
+//Colors
+$white: rgba(255, 255, 255, 1);
+$grey: rgba(122, 122, 122, 1);
+$dark-grey: rgba(47, 47, 47, 1);
+$opacity-grey-005: rgba(0, 0, 0, 0.05);
+$opacity-grey-015: rgba(0, 0, 0, 0.15);
+$black: rgba(0, 0, 0, 1);
+
+$bright-green: rgba(60, 179, 171, 1);
+$dark-green: rgba(20, 122, 115, 1);
+$red: rgb(240, 40, 40);
+
+
+//Mixins
+@mixin flex-between{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row{
+  @include flex-column;
+  flex-direction: row;
+}
+
+@mixin flex-row-start{
+  @include flex-column;
+  flex-direction: row;
+  justify-content: start;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, h5, p,
+figure, blockquote, dl, dd,a, button {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.1;
+  position: relative;
+  font-family: $ff;
+}
+
+.body-active{
+  overflow: hidden;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+  color: initial;
+  background: transparent;
+}
+
+button,
+li,a{
+  &:focus-visible{
+    outline: 3px solid rgb(30, 30, 255);
+  }
+}
+
+//Components
+.container{
+  margin-block: 7rem 4.75rem;
+}
+
+.container,
+dialog{
+  margin-inline: $fs-24;
+}
+
+.container > div,
+.container[data-type="dialog-success"]{
+  padding-inline: $fs-24;
+}
+
+@media screen and (min-width: 767px) {
+  .container,
+  dialog{
+    margin-inline: 3rem;
+  }
+
+  .container > div,
+  .container[data-type="dialog-success"]{
+    padding-inline: $fs-32;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .container,
+  dialog{
+    margin-inline: 3rem;
+  }
+
+  .container > div{
+    padding-inline: 3rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container,
+  dialog{
+    margin-inline: 22.1875rem;
+  }
+
+  .container{
+    margin-block: 12rem 7.75rem;
+  }
+
+  .container > div,
+  .container[data-type="dialog-success"]{
+    padding-inline: 3rem;
+  }
+
+  .container[data-type="dialog-container"] .card > p{
+    margin-inline-start: 2.5rem;
+  }
+}
+
+.container[data-type="dialog-container"],
+.container[data-type="dialog-success"]{
+  margin: 0;
+  padding-block: $fs-32;
+  width: 100%;
+  position: relative;
+    #close-dialog{
+      position: absolute;
+      right: $fs-24;
+      top: $fs-32;
+      cursor: pointer;
+        & path{
+          transition: all 0.3s ease;
+        }
+        &:hover path{
+          opacity: 1;
+        }
+    }
+
+    & > h2,
+    & > p{
+      padding-inline: $fs-24;
+      @media screen and (min-width: 767px) {
+        padding-inline: $fs-32;
+      }
+
+      @media screen and (min-width: 900px) {
+        padding-inline: 3rem;
+      }
+    }
+    
+    & > p{
+      margin-block: $fs-24;
+    }
+}
+
+.container[data-type="dialog-success"]{
+  @include flex-column;
+  text-align: center;
+    & > h2,
+    & > p{
+      padding-inline: 0;
+    }
+
+    & > h2{
+      margin-block-start: $fs-24;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding-block: 3rem ;
+      & > img{
+        width: 5.625rem;
+        height: 5.625rem;
+      }
+
+      & > h2{
+        margin-block-start: 3rem;
+      }
+
+      & > p{
+        max-width: 45ch;
+        margin-block: $fs-16 $fs-32;
+      }
+    }
+}
+
+//Utility classes
+.clr-br-green{
+  color: $bright-green;
+}
+
+.clr-black{
+  color: $black;
+}
+
+.clr-white{
+  color: $white;
+}
+
+.clr-grey{
+  color: $grey;
+}
+
+.bg-grey-005{
+  background-color: $opacity-grey-005;
+}
+
+.bg-grey-015{
+  background-color: $opacity-grey-015;
+}
+
+.bg-br-green{
+  background-color: $bright-green;
+}
+
+.bg-white{
+  background-color: $white;
+}
+
+.fw-reg{
+  font-weight: $fw-reg;
+}
+
+.fw-mdm{
+  font-weight: $fw-mdm;
+}
+
+.fw-bld{
+  font-weight: $fw-bld;
+}
+
+.b-radius-8{
+  border-radius: 0.5rem;
+}
+
+.border-005{
+  border: 1px solid $opacity-grey-005;
+}
+
+.border-015{
+  border: 1px solid $opacity-grey-015;
+}
+
+.opacity-card{
+  opacity: 0.5;
+}
+
+//Block elements
+dialog{
+  border: none;
+  padding: 0;
+  z-index: 50;
+  overflow-x:hidden;
+  position: absolute;
+  top: 13rem;
+  transition: all 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+  &::backdrop{
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s;
+  }
+
+  &:last-of-type{
+    top: 8.9375rem;
+      @media screen and (min-width: 1200px) {
+        top: 28.75rem;
+        margin-inline: auto;
+      }
+  }
+
+  &[open]{
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+//Hide native style
+input[type="radio"]{
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+  width: $fs-24;
+  height: $fs-24;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  aspect-ratio: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid $opacity-grey-015;
+    &::before{
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+      transform: scale(0);
+      background-color: $bright-green;
+    }
+
+    &[data-active="true"]::before{
+        transform: scale(1);
+    }
+}
+
+label{
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+label:hover,
+input[type="radio"]:hover{
+  border-color: $bright-green;
+  color: $bright-green;
+}
+
+@media screen and (max-width: 767px) {
+  #hero-desk{
+    display: none;
+  }
+
+  #bookmark{
+    display: none;
+  }
+}
+
+//Two grey lines separator
+.grey-row{
+  height: 0.0625rem;
+  background-color: $opacity-grey-015;
+  width: 20.4375rem;
+  display: block;
+  margin-block: $fs-24;
+  margin-inline: auto;
+}
+
+.grey-line-dialog{
+  position: relative;
+  height: 1px;
+  display: block;
+  width: 150%;
+  margin-block: $fs-24;
+  margin-inline: auto;
+  /* transform: translateX(-$fs-24); */
+}
+
+.gradient-to-top{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+  opacity: 0;
+  z-index: -2;
+}
+
+.gradient-to-top[data-visible="true"]{
+  opacity: 0.6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 767px) {
+  #hero-mob{
+    display: none;
+  }
+
+  .icon-nav{
+    display: none;
+  }
+
+  .grey-row,
+  #gradient-to-top{
+    display: none;
+  }
+}
+
+.icon-nav{
+  position: relative;
+  width: $fs-16;
+  height: $fs-16;
+    & img{
+      position: absolute;
+    }
+
+    #close[data-active="false"],
+    #open[data-active="false"]{
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #close[data-active="true"],
+    #open[data-active="true"]{
+      opacity: 1;
+      pointer-events: auto;
+    }
+}
+
+.logotype{
+  cursor: pointer;
+}
+
+.hero-images{
+  position: absolute;
+  background: url('../ASSETS/Images/image-hero-mobile.jpg') no-repeat center center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18.75rem;
+  z-index: -1;
+  @media screen and (min-width: 768px) {
+    background: url('../ASSETS/Images/image-hero-desktop.jpg') no-repeat center center;
+    height: 25rem;
+  }
+}
+
+h1{
+  font-size: $fs-20;
+  padding-inline: 1rem;
+}
+
+h2{
+  font-size: $fs-18;
+}
+
+h3,
+label{
+  font-size: $fs-14;
+}
+
+p{
+  color: $grey;
+  font-weight: $fw-reg;
+  font-size: $fs-14;
+  line-height: $fs-24;
+}
+
+.cta,
+.input-text{
+  font-size: $fs-14;
+  padding-block: $fs-15 $fs-16;
+  padding-inline: $fs-32;
+  border-radius: 2.09375rem;
+}
+
+.cta{
+  cursor: pointer;
+  transition: all 0.3s ease;
+    &:hover{
+      background-color: $dark-green;
+    }
+}
+
+.input-text{
+  text-align: center;
+}
+
+.error{
+  color: $red;
+  font-size: 0.625rem;
+  position: absolute;
+  bottom: 0.5rem;
+  right: calc(50% + 1.5rem);
+  display: block;
+  font-style: italic;
+  opacity: 0;
+    @media screen and (min-width: 1200px) {
+      right: calc(20% + 1.5rem);
+    }
+}
+
+#bookmark-box{
+  position: relative;
+  @include flex-row;
+  cursor: pointer;
+}
+
+#bookmark{
+  background-color: $opacity-grey-005;
+  padding-block: 17px 19px;
+  padding-inline: 4.5rem $fs-24;
+  border-radius: 2.09375rem;
+}
+
+.input-text{
+  max-width: 100px;
+  font-size: $fs-14;
+    &:focus{
+      border-color: $bright-green;
+    }
+}
+
+.counter{
+  font-size: $fs-32;
+  margin-block-end: 9px;
+  display: block;
+}
+
+.progress-box,
+#progress-bar{
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  margin-block-start: $fs-32;
+    #progress-bar{
+      width: 50%;
+      margin-block-start: 0;
+    }
+}
+
+.card-quantity{
+  font-size: $fs-32;
+  margin-inline-end: 8px;
+}
+
+//Exception
+.cta[data-variant="cta-small"],
+.input-text{
+  padding-inline: $fs-24;
+}
+
+.cta[data-variant="cta-big"],
+#bookmark{
+  font-size: $fs-16;
+}
+
+.card-quantity[data-type="dialog-quantity"]{
+  font-size: $fs-18;
+}
+
+.cta-opacity{
+  background-color: rgba(47, 47, 47, 0.5);
+}
+
+.cta-open[data-disabled="false"]{
+  pointer-events: all;
+}
+
+.cta-open[data-disabled="true"]{
+  background-color: rgb(46, 46, 46,  0.5);
+  pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  p[data-variant="quantity-desk"]{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  p[data-variant="quantity-mob"]{
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  p,
+  label{
+    font-size: $fs-16;
+  }
+
+  p[data-variant="p-small"],
+  p[data-variant="p-green"]{
+    font-size: $fs-15;
+  }
+
+  h1{
+    font-size: $fs-28;
+    padding-inline: 0;
+  }
+
+  h2{
+    font-size: $fs-24;
+  }
+
+  h2[data-variant="h2-small"]{
+    font-size: $fs-20;
+  }
+
+  h3{
+    font-size: $fs-18;
+  }
+
+  #bookmark-box{
+    position: relative;
+    @include flex-row;
+  }
+
+  #icon-book{
+    position: absolute;
+    left: 0;
+      & circle,
+      & path{
+        transition: all 0.3s ease;
+      }
+
+      &:hover circle{
+        fill: #707070;
+      }
+  }
+
+  .circle-active{
+    fill: $dark-green;
+  }
+
+  .bookmark-active{
+    fill: $white;
+  }
+
+  .bookmark-text{
+    color: $dark-green;
+  }
+}

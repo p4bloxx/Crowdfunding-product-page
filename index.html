@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crowdfunding product page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/variables-and-utilities.css">
+  <link rel="stylesheet" href="CSS/main.css">
+  <script src="JS/main.js" defer></script>
+  <script src="JS/dialog.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="#"><img src="ASSETS/Images/logo.svg" alt="logotype of Crowdfund - Crowdfund" class="logotype"></a>
+    <div class="icon-nav">
+      <img src="ASSETS/Images/icon-hamburger.svg" alt="" id="open" data-active="true">
+      <img src="ASSETS/Images/icon-close-menu.svg" alt="" id="close" data-active="false">
+    </div>
+      <nav data-visible="false" id="primary-nav">
+        <ul class="fw-mdm">
+          <li><a href="#">About</a></li>
+          <span class="grey-row"></span>
+          <li><a href="#">Discover</a></li>
+          <span class="grey-row"></span>
+          <li><a href="#">Get Started</a></li>
+        </ul>
+      </nav>
+  </header>
+  <div data-visible="false" class="gradient-to-top"></div>
+  <div class="hero-images"></div>
+  <main>
+    <div class="container" data-type="out-dialog">
+      <div class="crowd-heading | b-radius-8 border-005 bg-white">
+        <img src="ASSETS/Images/logo-mastercraft.svg" alt="">
+        <div class="title-box">
+          <h1 class="clr-black fw-bld">Mastercraft Bamboo Monitor Riser</h1>
+          <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
+        </div>
+        <div class="cta-box">
+          <button class="cta bg-br-green clr-white fw-bld cta-open" data-variant="cta-big">Back this project</button>
+          <button id="bookmark-box"><svg id="icon-book" class="" width="56" height="56" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#2F2F2F" cx="28" cy="28" r="28"/><path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/></g></svg><span id="bookmark" class="clr-grey fw-bld">Bookmark</span></button>
+        </div>
+      </div>
+      <div class="crowd-counters | b-radius-8 border-005">
+        <div class="counters">
+          <div>
+            <span class="counter | clr-black fw-bld"><span>$</span>50,000</span>
+            <p data-variant="p-small">of $100,000 backed</p>
+          </div>
+          <span class="bg-grey-015"></span>
+          <div>
+            <span class="counter | clr-black fw-bld">5,007</span>
+            <p data-variant="p-small">total backers</p>
+          </div>
+          <span class="bg-grey-015"></span>
+          <div>
+            <span class="counter | clr-black fw-bld">56</span>
+            <p data-variant="p-small">days left</p>
+          </div>
+        </div>
+        <div class="progress-box | bg-grey-005">
+          <div id="progress-bar" class="bg-br-green" style="width: 50%;"></div>
+        </div>
+      </div>
+      <div class="crowd-plans | b-radius-8 border-005" data-type="bamboo">
+        <h2 data-variant="h2-small" class="clr-black fw-bld">About this project</h2>
+        <p>The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height.
+          Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.
+        </p>
+        <p>Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
+        <div class="plans-cards">
+          <div class="card | b-radius-8 border-015">
+            <div class="card-name">
+              <h3 class="clr-black fw-bld">Bamboo Stand</h3>
+              <p data-variant="p-green" class="fw-mdm clr-br-green">Pledge $25 or more</p>
+            </div>
+            <p>
+              You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.
+            </p>
+            <div>
+              <p><span class="card-quantity | fw-bld clr-black" data-type="quantity-out" data-connect="bamboo">101</span>left</p>
+              <button class="cta bg-br-green clr-white fw-bld cta-open" data-disabled="false">Select Reward</button>
+            </div>
+          </div>
+
+          <div class="card | b-radius-8 border-015" data-type="black">
+            <div class="card-name">
+              <h3 class="clr-black fw-bld">Black Edition Stand</h3>
+              <p data-variant="p-green" class="fw-mdm clr-br-green">Pledge $75 or more</p>
+            </div>
+            <p>
+              You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
+            </p>
+            <div>
+              <p><span class="card-quantity | fw-bld clr-black" data-type="quantity-out" data-connect="black">64</span>left</p>
+              <button class="cta bg-br-green clr-white fw-bld cta-open" data-disabled="false">Select Reward</button>
+            </div>
+          </div>
+
+          <div class="card | b-radius-8 border-015" data-type="special">
+            <div class="card-name">
+              <h3 class="clr-black fw-bld">Mahogany Special Edition</h3>
+              <p data-variant="p-green" class="fw-mdm clr-br-green">Pledge $200 or more</p>
+            </div>
+            <p>
+              You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
+            </p>
+            <div>
+              <p><span class="card-quantity | fw-bld clr-black" data-type="quantity-out" data-connect="special">2</span>left</p>
+              <button class="cta bg-br-green clr-white fw-bld cta-open" data-disabled="false">Select Reward</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <dialog id="first-dialog" class="first | b-radius-8" data-type="dialog-plans">
+      <div class="container | b-radius-8 border-005" data-type="dialog-container">
+        <svg id="close-dialog" width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill="#000" fill-rule="evenodd" opacity=".4"/></svg>
+        <h2 class="clr-black fw-bld">Back this project</h2>
+        <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+        <div class="dialog-cards">
+
+          <div class="card | b-radius-8 border-005" data-variant="dialog-card">
+            <div class="radio-and-name">
+              <input type="radio" name="radio" id="no-reward" class="border-015" data-active="false">
+              <label for="no-reward" class="clr-black fw-bld" id="p-no-reward">Pledge with no reward</label>
+            </div>
+            <p data-variant="p-small">Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
+            <div class="accordion" aria-hidden="true">
+              <div>
+                <span class="grey-line-dialog | bg-grey-015"></span>
+                <div class="pledge-box">
+                  <p data-variant="p-small">Enter your pledge</p>
+                  <div class="cta-box" aria-expanded="false">
+                    <input type="text" name="pledge" id="pledge-no-reward" placeholder="0" class="input-text | clr-black border-015 fw-bld" autocomplete="off">
+                    <span class="dollar-mark">$</span>
+                    <button data-variant="cta-small" data-type="cta-card" class="cta bg-br-green clr-white fw-bld cta-open no-reward" data-disabled="false">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card | b-radius-8 border-005" data-variant="dialog-card"  data-type="bamboo">
+            <div class="radio-and-name">
+              <input type="radio" name="radio" id="bamboo" class="border-015" data-active="false">
+              <div>
+                <label for="bamboo" class="clr-black fw-bld">Bamboo Stand</label>
+                <p data-variant="p-green" class="clr-br-green fw-mdm">Pledge $25 or more</p>
+                <p data-variant="quantity-desk"><span class="card-quantity | clr-black fw-bld" data-type="dialog-quantity" data-connect="bamboo">101</span>left</p>
+              </div>
+            </div>
+            <p data-variant="p-small">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+            <p data-variant="quantity-mob"><span class="card-quantity | clr-black fw-bld" data-type="dialog-quantity" data-connect="bamboo">101</span>left</p>
+            <div class="accordion" aria-hidden="true">
+              <div>
+                <span class="grey-line-dialog | bg-grey-015"></span>
+                <div class="pledge-box">
+                  <p data-variant="p-small">Enter your pledge</p>
+                  <div class="cta-box" aria-expanded="false">
+                    <input type="text" name="pledge" id="pledge-bamboo" placeholder="0" class="input-text | clr-black border-015 fw-bld" data-variant="25" autocomplete="off">
+                    <span class="dollar-mark">$</span>
+                    <button data-variant="cta-small" data-type="cta-card" class="cta bg-br-green clr-white fw-bld cta-open" data-disabled="false">Continue</button>
+                  </div>
+                  <span class="error">Minimum 25 dollars</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card | b-radius-8 border-005" data-variant="dialog-card"  data-type="black">
+            <div class="radio-and-name">
+              <input type="radio" name="radio" id="black" class="border-015" data-active="false">
+              <div>
+                <label for="black" class="clr-black fw-bld">Black Edition Stand</label>
+                <p data-variant="p-green" class="clr-br-green fw-mdm">Pledge $75 or more</p>
+                <p data-variant="quantity-desk"><span class="card-quantity | clr-black fw-bld" data-type="dialog-quantity" data-connect="black">64</span>left</p>
+              </div>
+            </div>
+            <p data-variant="p-small">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+            <p data-variant="quantity-mob"><span class="card-quantity | clr-black fw-bld" data-type="dialog-quantity" data-connect="black">64</span>left</p>
+            <div class="accordion" aria-hidden="true">
+              <div>
+                <div>
+                  <span class="grey-line-dialog | bg-grey-015"></span>
+                  <div class="pledge-box">
+                    <p data-variant="p-small">Enter your pledge</p>
+                    <div class="cta-box" aria-expanded="false">
+                      <input type="text" name="pledge" id="pledge-black" placeholder="0" class="input-text | clr-black border-015 fw-bld" data-variant="75" autocomplete="off">
+                      <span class="dollar-mark">$</span>
+                      <button data-variant="cta-small" data-type="cta-card" class="cta bg-br-green clr-white fw-bld cta-open" data-disabled="false">Continue</button>
+                    </div>
+                    <span class="error">Minimum 75 dollars</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card | b-radius-8 border-005" data-variant="dialog-card"  data-type="special">
+            <div class="radio-and-name">
+              <input type="radio" name="radio" id="special" class="border-015" data-active="false">
+              <div>
+                <label for="special" class="clr-black fw-bld">Mahogany Special Edition</label>
+                <p data-variant="p-green" class="clr-br-green fw-mdm">Pledge $200 or more</p>
+                <p data-variant="quantity-desk"><span class="card-quantity | clr-black fw-bld" data-type="dialog-quantity" data-connect="special">2</span>left</p>
+              </div>
+            </div>
+            <p data-variant="p-small">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. 
+              Shipping is included.</p>
+            <p data-variant="quantity-mob"><span class="card-quantity | clr-black fw-bld" data-type="dialog-quantity" data-connect="special">2</span>left</p>
+            <div class="accordion" aria-hidden="true">
+              <div>
+                <span class="grey-line-dialog | bg-grey-015"></span>
+                <div class="pledge-box">
+                  <p data-variant="p-small">Enter your pledge</p>
+                  <div class="cta-box" aria-expanded="false">
+                    <input type="text" name="pledge" id="pledge-special" placeholder="0" class="input-text | clr-black border-015 fw-bld" data-variant="200" autocomplete="off">
+                    <span class="dollar-mark">$</span>
+                    <button data-variant="cta-small" data-type="cta-card" class="cta bg-br-green clr-white fw-bld cta-open" data-disabled="false">Continue</button>
+                  </div>
+                  <span class="error">Minimum 200 dollars</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog data-type="success" class="success | b-radius-8">
+      <div class="container | b-radius-8 border-005" data-type="dialog-success">
+        <img src="ASSETS/Images/icon-check.svg" alt="">
+        <h2>Thanks for your support!</h2>
+        <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
+        <button class="cta bg-br-green clr-white fw-bld">Got it!</button>
+      </div>
+    </dialog>
+  </main>
+</body>
+</html>

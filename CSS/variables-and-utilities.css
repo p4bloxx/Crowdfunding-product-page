@@ -1,0 +1,630 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, h5, p,
+figure, blockquote, dl, dd, a, button {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.1;
+  position: relative;
+  font-family: "Commissioner", sans-serif;
+}
+
+.body-active {
+  overflow: hidden;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+  color: initial;
+  background: transparent;
+}
+
+button:focus-visible,
+li:focus-visible, a:focus-visible {
+  outline: 3px solid rgb(30, 30, 255);
+}
+
+.container {
+  margin-block: 7rem 4.75rem;
+}
+
+.container,
+dialog {
+  margin-inline: 1.5rem;
+}
+
+.container > div,
+.container[data-type=dialog-success] {
+  padding-inline: 1.5rem;
+}
+
+@media screen and (min-width: 767px) {
+  .container,
+  dialog {
+    margin-inline: 3rem;
+  }
+  .container > div,
+  .container[data-type=dialog-success] {
+    padding-inline: 2rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .container,
+  dialog {
+    margin-inline: 3rem;
+  }
+  .container > div {
+    padding-inline: 3rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container,
+  dialog {
+    margin-inline: 22.1875rem;
+  }
+  .container {
+    margin-block: 12rem 7.75rem;
+  }
+  .container > div,
+  .container[data-type=dialog-success] {
+    padding-inline: 3rem;
+  }
+  .container[data-type=dialog-container] .card > p {
+    margin-inline-start: 2.5rem;
+  }
+}
+.container[data-type=dialog-container],
+.container[data-type=dialog-success] {
+  margin: 0;
+  padding-block: 2rem;
+  width: 100%;
+  position: relative;
+}
+.container[data-type=dialog-container] #close-dialog,
+.container[data-type=dialog-success] #close-dialog {
+  position: absolute;
+  right: 1.5rem;
+  top: 2rem;
+  cursor: pointer;
+}
+.container[data-type=dialog-container] #close-dialog path,
+.container[data-type=dialog-success] #close-dialog path {
+  transition: all 0.3s ease;
+}
+.container[data-type=dialog-container] #close-dialog:hover path,
+.container[data-type=dialog-success] #close-dialog:hover path {
+  opacity: 1;
+}
+.container[data-type=dialog-container] > h2, .container[data-type=dialog-container] > p,
+.container[data-type=dialog-success] > h2,
+.container[data-type=dialog-success] > p {
+  padding-inline: 1.5rem;
+}
+@media screen and (min-width: 767px) {
+  .container[data-type=dialog-container] > h2, .container[data-type=dialog-container] > p,
+  .container[data-type=dialog-success] > h2,
+  .container[data-type=dialog-success] > p {
+    padding-inline: 2rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .container[data-type=dialog-container] > h2, .container[data-type=dialog-container] > p,
+  .container[data-type=dialog-success] > h2,
+  .container[data-type=dialog-success] > p {
+    padding-inline: 3rem;
+  }
+}
+.container[data-type=dialog-container] > p,
+.container[data-type=dialog-success] > p {
+  margin-block: 1.5rem;
+}
+
+.container[data-type=dialog-success] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.container[data-type=dialog-success] > h2, .container[data-type=dialog-success] > p {
+  padding-inline: 0;
+}
+.container[data-type=dialog-success] > h2 {
+  margin-block-start: 1.5rem;
+}
+@media screen and (min-width: 1200px) {
+  .container[data-type=dialog-success] {
+    padding-block: 3rem;
+  }
+  .container[data-type=dialog-success] > img {
+    width: 5.625rem;
+    height: 5.625rem;
+  }
+  .container[data-type=dialog-success] > h2 {
+    margin-block-start: 3rem;
+  }
+  .container[data-type=dialog-success] > p {
+    max-width: 45ch;
+    margin-block: 1rem 2rem;
+  }
+}
+
+.clr-br-green {
+  color: rgb(60, 179, 171);
+}
+
+.clr-black {
+  color: rgb(0, 0, 0);
+}
+
+.clr-white {
+  color: rgb(255, 255, 255);
+}
+
+.clr-grey {
+  color: rgb(122, 122, 122);
+}
+
+.bg-grey-005 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.bg-grey-015 {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.bg-br-green {
+  background-color: rgb(60, 179, 171);
+}
+
+.bg-white {
+  background-color: rgb(255, 255, 255);
+}
+
+.fw-reg {
+  font-weight: 400;
+}
+
+.fw-mdm {
+  font-weight: 500;
+}
+
+.fw-bld {
+  font-weight: 700;
+}
+
+.b-radius-8 {
+  border-radius: 0.5rem;
+}
+
+.border-005 {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.border-015 {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.opacity-card {
+  opacity: 0.5;
+}
+
+dialog {
+  border: none;
+  padding: 0;
+  z-index: 50;
+  overflow-x: hidden;
+  position: absolute;
+  top: 13rem;
+  transition: all 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+}
+dialog:last-of-type {
+  top: 8.9375rem;
+}
+@media screen and (min-width: 1200px) {
+  dialog:last-of-type {
+    top: 28.75rem;
+    margin-inline: auto;
+  }
+}
+dialog[open] {
+  opacity: 1;
+  pointer-events: all;
+}
+
+input[type=radio] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  aspect-ratio: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+input[type=radio]::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  transform: scale(0);
+  background-color: rgb(60, 179, 171);
+}
+input[type=radio][data-active=true]::before {
+  transform: scale(1);
+}
+
+label {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+label:hover,
+input[type=radio]:hover {
+  border-color: rgb(60, 179, 171);
+  color: rgb(60, 179, 171);
+}
+
+@media screen and (max-width: 767px) {
+  #hero-desk {
+    display: none;
+  }
+  #bookmark {
+    display: none;
+  }
+}
+.grey-row {
+  height: 0.0625rem;
+  background-color: rgba(0, 0, 0, 0.15);
+  width: 20.4375rem;
+  display: block;
+  margin-block: 1.5rem;
+  margin-inline: auto;
+}
+
+.grey-line-dialog {
+  position: relative;
+  height: 1px;
+  display: block;
+  width: 150%;
+  margin-block: 1.5rem;
+  margin-inline: auto;
+  /* transform: translateX(-$fs-24); */
+}
+
+.gradient-to-top {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0;
+  z-index: -2;
+}
+
+.gradient-to-top[data-visible=true] {
+  opacity: 0.6;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 767px) {
+  #hero-mob {
+    display: none;
+  }
+  .icon-nav {
+    display: none;
+  }
+  .grey-row,
+  #gradient-to-top {
+    display: none;
+  }
+}
+.icon-nav {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+}
+.icon-nav img {
+  position: absolute;
+}
+.icon-nav #close[data-active=false],
+.icon-nav #open[data-active=false] {
+  opacity: 0;
+  pointer-events: none;
+}
+.icon-nav #close[data-active=true],
+.icon-nav #open[data-active=true] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.logotype {
+  cursor: pointer;
+}
+
+.hero-images {
+  position: absolute;
+  background: url("../ASSETS/Images/image-hero-mobile.jpg") no-repeat center center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18.75rem;
+  z-index: -1;
+}
+@media screen and (min-width: 768px) {
+  .hero-images {
+    background: url("../ASSETS/Images/image-hero-desktop.jpg") no-repeat center center;
+    height: 25rem;
+  }
+}
+
+h1 {
+  font-size: 1.25rem;
+  padding-inline: 1rem;
+}
+
+h2 {
+  font-size: 1.125rem;
+}
+
+h3,
+label {
+  font-size: 0.875rem;
+}
+
+p {
+  color: rgb(122, 122, 122);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.cta,
+.input-text {
+  font-size: 0.875rem;
+  padding-block: 0.9375rem 1rem;
+  padding-inline: 2rem;
+  border-radius: 2.09375rem;
+}
+
+.cta {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cta:hover {
+  background-color: rgb(20, 122, 115);
+}
+
+.input-text {
+  text-align: center;
+}
+
+.error {
+  color: rgb(240, 40, 40);
+  font-size: 0.625rem;
+  position: absolute;
+  bottom: 0.5rem;
+  right: calc(50% + 1.5rem);
+  display: block;
+  font-style: italic;
+  opacity: 0;
+}
+@media screen and (min-width: 1200px) {
+  .error {
+    right: calc(20% + 1.5rem);
+  }
+}
+
+#bookmark-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+#bookmark {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding-block: 17px 19px;
+  padding-inline: 4.5rem 1.5rem;
+  border-radius: 2.09375rem;
+}
+
+.input-text {
+  max-width: 100px;
+  font-size: 0.875rem;
+}
+.input-text:focus {
+  border-color: rgb(60, 179, 171);
+}
+
+.counter {
+  font-size: 2rem;
+  margin-block-end: 9px;
+  display: block;
+}
+
+.progress-box,
+#progress-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  margin-block-start: 2rem;
+}
+.progress-box #progress-bar,
+#progress-bar #progress-bar {
+  width: 50%;
+  margin-block-start: 0;
+}
+
+.card-quantity {
+  font-size: 2rem;
+  margin-inline-end: 8px;
+}
+
+.cta[data-variant=cta-small],
+.input-text {
+  padding-inline: 1.5rem;
+}
+
+.cta[data-variant=cta-big],
+#bookmark {
+  font-size: 1rem;
+}
+
+.card-quantity[data-type=dialog-quantity] {
+  font-size: 1.125rem;
+}
+
+.cta-opacity {
+  background-color: rgba(47, 47, 47, 0.5);
+}
+
+.cta-open[data-disabled=false] {
+  pointer-events: all;
+}
+
+.cta-open[data-disabled=true] {
+  background-color: rgba(46, 46, 46, 0.5);
+  pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  p[data-variant=quantity-desk] {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  p[data-variant=quantity-mob] {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  p,
+  label {
+    font-size: 1rem;
+  }
+  p[data-variant=p-small],
+  p[data-variant=p-green] {
+    font-size: 0.9375rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+    padding-inline: 0;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h2[data-variant=h2-small] {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1.125rem;
+  }
+  #bookmark-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  #icon-book {
+    position: absolute;
+    left: 0;
+  }
+  #icon-book circle, #icon-book path {
+    transition: all 0.3s ease;
+  }
+  #icon-book:hover circle {
+    fill: #707070;
+  }
+  .circle-active {
+    fill: rgb(20, 122, 115);
+  }
+  .bookmark-active {
+    fill: rgb(255, 255, 255);
+  }
+  .bookmark-text {
+    color: rgb(20, 122, 115);
+  }
+}
+
+/*# sourceMappingURL=variables-and-utilities.css.map */

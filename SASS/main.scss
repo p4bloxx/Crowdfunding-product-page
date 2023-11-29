@@ -1,0 +1,267 @@
+@use 'variables-and-utilities' as *;
+
+header{
+  padding-inline: $fs-24;
+  padding-block-start: $fs-32;
+  @include flex-between;
+  align-items: start;
+  position: relative;
+  background: linear-gradient(180deg, rgb(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.00) 100%);
+  height: 8rem;
+    @media screen and (max-width: 767px) {
+      #primary-nav{
+        position: fixed;
+        background-color: $white;
+        width: calc(100% - 3rem);
+        border-radius: 0.5rem;
+        padding: $fs-24 $fs-24 $fs-24 0;
+        top: 5.5rem;
+        @include flex-column;
+        align-items: start;
+        justify-content: stretch;
+        font-size: $fs-18;
+        z-index: 10;
+        transition: all 0.3s ease;
+        transform: translateY(-100vh);
+          & ul li{
+            width: fit-content;
+            padding-inline-start: $fs-24;
+          }
+        }
+
+        #primary-nav[data-visible="true"]{
+          transform: translateY(0);
+        } 
+    }
+}
+
+@media screen and (min-width: 767px) {
+  header{
+    padding-inline: 3rem;
+      & ul{
+        font-size: $fs-13;
+        @include flex-row;
+        gap: $fs-32;
+        color: $white;
+      }
+
+      & ul li{
+        cursor: pointer;
+        transition: all 0.2s ease;
+          &:hover{
+            text-decoration: underline;
+          }
+      }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  header{
+    padding-inline: 10.375rem;
+  }
+}
+
+.container{
+    .crowd-heading{
+      padding-block-end: 2.5rem;
+      @include flex-column;
+      text-align: center;
+        & img{
+          transform: translateY(-50%);
+        }
+        .title-box p{
+          margin-block: $fs-16 $fs-24;
+        }
+        .cta-box{
+          @include flex-row;
+          gap: 9px;
+        }
+
+        @media screen and (min-width: 767px) {
+          .cta-box{
+            gap: $fs-18;
+          }
+
+          .title-box p{
+            margin-block: $fs-16 2.5rem;
+          }
+        }
+
+        @media screen and (min-width: 900px) {
+          .cta-box{
+            width: 100%;
+            @include flex-between;
+          }
+        }
+    }
+
+    .crowd-counters{
+      padding: $fs-32 $fs-24 2.5rem $fs-24;
+      margin-block: $fs-24;
+      @include flex-column;
+      text-align: center;
+      @media screen and (min-width: 767px) {
+        align-items: start;
+        padding-inline: $fs-32;
+      }
+
+      @media screen and (min-width: 900px) {
+        padding-inline: 3rem;
+      }
+        .counters > span{
+          margin-block: $fs-24;
+          display: block;
+          height: 1.5px;
+        }
+
+        @media screen and (min-width: 767px) {
+          .counters{
+            @include flex-row-start;
+              & > div{
+                padding-inline-end: 3rem;
+              }
+
+              & > div:not(:first-child){
+                padding-inline-start: 2.5rem;
+              }
+
+              & > div:not(:last-child){
+                border-right: 1px solid $opacity-grey-015;
+              }
+          }
+
+          .counters > span{
+            display: none;
+          }
+        }
+    }
+
+    .crowd-plans{
+      padding-block: 2.5rem;
+        & > :nth-child(2){
+          margin-block: $fs-24;
+        }
+
+        & > :nth-child(3){
+          margin-block-end: 2.1875rem;
+          @media screen and (min-width: 900px) {
+            margin-block-end: 2.5rem;
+          }
+        }
+    }
+}
+
+//to style both cards, out and inside dialog
+.plans-cards > div:not(:last-child),
+.dialog-cards > div:not(:last-child){
+  margin-block-end: $fs-24;
+}
+
+.card{
+  padding: $fs-24;
+  position: relative;
+  overflow-x: hidden;
+    @media screen and (min-width: 767px) {
+      padding: 2.5rem $fs-28 $fs-24 $fs-28;
+    }
+
+    & > p{
+      margin-block-start: $fs-24;
+    }
+
+    //quantity plans big number inside card out of dialog
+    & > div:last-of-type > p{
+      margin-block-start: $fs-24;
+    }
+
+    //catch only cta out of dialog
+    & > div:nth-of-type(2) > button{
+      margin-block-start: $fs-32;
+    }
+
+    .card-name h3,
+    .radio-and-name label:not(#p-no-reward){
+      margin-block-end: 0.5rem;
+    }
+
+    @media screen and (min-width: 767px) {
+      .radio-and-name label:not(#p-no-reward){
+        margin-block-end: 0;
+      }
+    }
+}
+
+@media screen and (min-width: 768px) {
+  .card-name,
+  .container[data-type="out-dialog"] .card > :last-child{
+    @include flex-between;
+  }
+}
+
+//Container inside dialog
+.container[data-type="dialog-container"],
+.container[data-type="dialog-success"]{
+
+    .radio-and-name{
+      @include flex-row-start;
+      gap: $fs-16;
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 767px) {
+      .radio-and-name > div{
+        @include flex-row-start;
+        gap: $fs-24;
+        width: 100%;
+      }
+
+      p[data-variant="quantity-desk"]{
+        margin-left: auto;
+      }
+    }
+
+    .pledge-box{
+      @include flex-column;
+      gap: $fs-16;
+        .cta-box{
+          position: relative;
+            .dollar-mark{
+              position: absolute;
+              left: $fs-24;
+              top: $fs-15;
+              opacity: 0.25;
+            }
+
+            button{
+              margin-inline-start: $fs-16;
+            }
+        }
+    }
+
+    .accordion{
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.5s ease;
+        & > div{
+          overflow: hidden;
+        }
+
+        @media screen and (min-width: 1200px) {
+          .pledge-box{
+            @include flex-between;
+          }
+
+          .accordion{
+            justify-content: stretch;
+          }
+
+          & > div{
+            width: 100%;
+          }
+        }
+    }
+
+    .accordion[aria-hidden="false"]{
+      grid-template-rows: 1fr;
+    }
+}
