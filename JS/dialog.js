@@ -38,7 +38,6 @@ closeDialog.addEventListener('click', () => {
     const cardBox = currentCard.parentNode;
     const allCards = cardBox.querySelectorAll('.card');
     const arrCards = Array.from(allCards)
-
     hideContents(arrCards);
     showContents(currentCard);
   })
@@ -65,49 +64,55 @@ function showContents(currentCard){
 //after select a plans card, click btn "Continue" to close dialog and update counters - step 03
 cardBtn.forEach((btn) => {
   btn.addEventListener('click', (e) => {
-    checkInput(e)
+    let currentBtn = e.target;
+    let currentInput = currentBtn.previousElementSibling.previousElementSibling;
+    checkInput(currentBtn, currentInput)
   })
 })
 
 //to check if user add correct import in input text - step 04
-function checkInput(e){
-  let currentBtn = e.target;
-  let currentInput = currentBtn.previousElementSibling.previousElementSibling;
+function checkInput(currentBtn, currentInput){
+  let valueInput = currentInput.value;
+
   let pledgeBox = currentInput.parentNode.parentNode;
   let limitDollar = currentInput.getAttribute('data-variant');
 
-  if((limitDollar == 25 && currentInput.value < 25) || (limitDollar == 75 && currentInput.value < 75) || (limitDollar == 200 && currentInput.value < 200)){
+  if((limitDollar == 25 && valueInput < 25) || (limitDollar == 75 && valueInput < 75) || (limitDollar == 200 && valueInput < 200)){
     currentInput.style.borderColor = 'red'
     pledgeBox.querySelector('.error').style.opacity = '1';
 
-  }else if(currentBtn.classList.contains('no-reward') && currentInput.value != 0){
+  }else if(currentBtn.classList.contains('no-reward') && valueInput != 0){
     updateCounter(currentInput);
     plansDialog.close();
     const success = setTimeout(completeTask, 500);
-
-  } else {
+  }  else {
     currentInput.style.borderColor = 'rgba(0, 0, 0, 0.15)';
-    currentInput.value = '';
+    valueInput = '';
     pledgeBox.querySelector('.error').style.opacity = '0';
     updateCounter(currentInput);
+    updateCardQuantity(pledgeBox)
     plansDialog.close();
     const success = setTimeout(completeTask, 500);
   }
+}
 
-  //If amount of dollars is correct, first, update number of quantity plans card - step 04 (2)
+ //If amount of dollars is correct, first, update number of quantity plans card - step 04 (2)
+function updateCardQuantity(pledgeBox){
   const typeCard = pledgeBox.closest('.card').querySelector('.card-quantity').getAttribute('data-connect');
+  
   const body = document.querySelector('body');
-  body.querySelectorAll(`.card-quantity[data-connect="${typeCard}"]`).forEach((type) => {
-    type.innerText = Number(type.innerText - 1);
-
-    if(type.innerText < 1){
-      body.querySelectorAll(`.card[data-type="${typeCard}"]`).forEach((card) => {
-        card.style.opacity = '0.5'
-        card.style.pointerEvents = 'none'
-        card.querySelector('.cta-open[data-disabled="false"]').setAttribute('data-disabled', true)
-      })
-    }
-  })
+  
+    body.querySelectorAll(`.card-quantity[data-connect="${typeCard}"]`).forEach((type) => {
+      type.innerText = Number(type.innerText - 1);
+  
+      if(type.innerText < 1){
+        body.querySelectorAll(`.card[data-type="${typeCard}"]`).forEach((card) => {
+          card.style.opacity = '0.5'
+          card.style.pointerEvents = 'none'
+          card.querySelector('.cta-open[data-disabled="false"]').setAttribute('data-disabled', true)
+        })
+      }
+    })  
 }
 
 //second, after first dialog is close, show up the dialog with success feedback
@@ -124,9 +129,10 @@ successBtn.addEventListener('click', () => {
 function updateCounter(currentInput){
   let currentToNumber = Number(currentInput.value);
   let numb = [];
-  
+  console.log(currentToNumber)
   counters.forEach((count) => {
     let convertToNumb = count.innerText.replace(/[^0-9]/g, '');
+    console.log(convertToNumb)
     numb.push(Number(convertToNumb));
   })
 
@@ -134,7 +140,8 @@ function updateCounter(currentInput){
   let counter2 = numb[1] + 1;
   counters[0].innerText = `$` + counter1.toLocaleString().replace(".", ",");
   counters[1].innerText = counter2.toLocaleString().replace(".", ",");
-
+  console.log(counter1)
+  console.log(counter2)
   let newWidth = (50 + currentToNumber) / 1000;
 
   //and last step, update the length of progress bar
