@@ -110,6 +110,7 @@ function updateCardQuantity(pledgeBox){
           card.style.opacity = '0.5'
           card.style.pointerEvents = 'none'
           card.querySelector('.cta-open[data-disabled="false"]').setAttribute('data-disabled', true)
+          plansDialog.close();
         })
       }
     })  
